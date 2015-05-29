@@ -4,12 +4,19 @@
 ## Add instructions for how to build on Linux with ICXX
 ##
 ## http://www.gnu.org/software/make/manual/make.html#Automatic-Variables
+##
+## Setting up the Intel Compiler:
+##  -Find the compilervars.sh script in the composer xe bin
+##  -Default location on Medusa is /opt/intel/composer_xe_2015/bin/compilervars.sh
+##  -Source this script with intel64 as the argument:
+##	 $ source compilervars.sh intel64
 
 IDIR = ../src
-CXX = clang++
+## CXX = clang++
+CXX = icpc
 ## TODO use mapopts to convert flags manually from text book
 ## Add a note here for each flag describing it's use
-CXXFLAGS = -I$(IDIR) -O0
+CXXFLAGS = -I$(IDIR) -O2
 
 ODIR61 = obj61
 LDIR = obj61
@@ -30,4 +37,4 @@ OBJ = mandelbrot.o main.o ppm.o wtime.o
 .PHONY: clean
 
 clean:
-	rm -f $(ODIR61)/*.o *~ core $(INCDIR)/*~
+	rm -f .o *~ core $(INCDIR)/*~
