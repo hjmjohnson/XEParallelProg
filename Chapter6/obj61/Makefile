@@ -16,7 +16,7 @@ IDIR = ../src
 CXX = icpc
 ## TODO use mapopts to convert flags manually from text book
 ## Add a note here for each flag describing it's use
-CXXFLAGS = -I$(IDIR) -O2
+CXXFLAGS = -I$(IDIR) -O2 -ipo
 
 ODIR61 = obj61
 LDIR = obj61
@@ -37,4 +37,4 @@ OBJ = mandelbrot.o main.o ppm.o wtime.o
 .PHONY: clean
 
 clean:
-	rm -f .o *~ core $(INCDIR)/*~
+	rm -f *.o *~ core $(INCDIR)/*~
