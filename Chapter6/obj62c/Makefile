@@ -1,4 +1,4 @@
-## This is a makefile for activity 6.1 page 158 of text book.
+## This is a makefile for activity 6.2 page 164 of text book.
 ## http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 ##
 ## Add instructions for how to build on Linux with ICXX
@@ -14,9 +14,16 @@
 IDIR = ../src
 ## CXX = clang++
 CXX = icpc
-## TODO use mapopts to convert flags manually from text book
-## Add a note here for each flag describing it's use
+
 CXXFLAGS = -I$(IDIR) -O2 -ipo -g -profile-functions -profile-loops:all -profile-loops-report:2 -qopt-report-phase=ipo -opt-report-routine=main 
+## -O2: optimize for speed
+## -ipo: enable interprocedural optimization
+## -g: generate debug information
+## -profile-functions: track time for functions
+## -profile-loops:all: track time for inner and outer loops
+## -profile-loops-report:2: level of detail in report, 2 reports loop times and iteration counts
+## -qopt-report-phase=ipo: 
+## -opt-report-routine=main:
 
 ODIR61 = obj61
 LDIR = obj61

@@ -12,9 +12,11 @@
 ##	 $ source compilervars.sh intel64
 
 IDIR = ../src
-## CXX = clang++
 CXX = icpc
+
 CXXFLAGS = -I$(IDIR) -O2 -ipo
+## -02: optimize for speed
+## -ipo: enable interprocedural optimization
 
 PROG=61.exe
 
