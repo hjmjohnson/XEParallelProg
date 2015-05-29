@@ -1,0 +1,1 @@
+This chapter uses the NQueens example program that ships with Advisor. You can find the nqueens_Advisor.zip file in the Samples\<locale> folder in the Parallel Studio 2011 install folder, usually C:\Program Files\Intel\Parallel Studio 2011.
