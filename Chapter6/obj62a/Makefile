@@ -14,12 +14,9 @@
 IDIR = ../src
 ## CXX = clang++
 CXX = icpc
-## TODO use mapopts to convert flags manually from text book
-## Add a note here for each flag describing it's use
 CXXFLAGS = -I$(IDIR) -O2 -ipo -g -profile-functions -profile-loops:all -profile-loops-report:2
 
-ODIR61 = obj61
-LDIR = obj61
+PROG=62.exe
 
 LIBS = -lm
 
@@ -31,10 +28,21 @@ OBJ = mandelbrot.o main.o ppm.o wtime.o
 %.o: ../src/%.cpp $(DEPS)
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
-62.exe: $(OBJ)
+$(PROG): $(OBJ)
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
 
 .PHONY: clean
 
 clean:
 	rm -f *.o *~ core $(INCDIR)/*~
+
+test: 62.exe
+	./$(PROG) |tee log_run1
+	./$(PROG) |tee log_run2
+	./$(PROG) |tee log_run3
+	./$(PROG) |tee log_run4
+	./$(PROG) |tee log_run5
+	cat log_run*
+
+stats: 62.exe
+	echo "$(cat log_run* |grep "Time to calc" |sed 's/\.\.\./#/g' |awk -F# '{sum+=$2} END {print sum}')/5"|bc -l
