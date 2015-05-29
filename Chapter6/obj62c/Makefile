@@ -12,7 +12,6 @@
 ##	 $ source compilervars.sh intel64
 
 IDIR = ../src
-## CXX = clang++
 CXX = icpc
 
 CXXFLAGS = -I$(IDIR) -O2 -ipo -g -profile-functions -profile-loops:all -profile-loops-report:2 -qopt-report-phase=ipo -opt-report-routine=main 
@@ -22,8 +21,8 @@ CXXFLAGS = -I$(IDIR) -O2 -ipo -g -profile-functions -profile-loops:all -profile-
 ## -profile-functions: track time for functions
 ## -profile-loops:all: track time for inner and outer loops
 ## -profile-loops-report:2: level of detail in report, 2 reports loop times and iteration counts
-## -qopt-report-phase=ipo: 
-## -opt-report-routine=main:
+## -qopt-report-phase=ipo: specifies which optimization phase to generate reports for
+## -opt-report-routine=main: specifies which routime to geneerate an optimization report for (if it contains substring "main")
 
 ODIR61 = obj61
 LDIR = obj61
