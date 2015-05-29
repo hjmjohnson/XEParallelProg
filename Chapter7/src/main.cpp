@@ -2,7 +2,7 @@
 #include <memory.h>
 extern int Prime(int end);
 extern int PrimeRecursive(int end);
-extern "C" double wtime();
+#include "wtime.h"
 
 #define PRIME_NUMS 1000000
 #define PRIME_NUMS_RECURSE 20000
