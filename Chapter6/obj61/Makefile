@@ -14,9 +14,10 @@
 IDIR = ../src
 CXX = icpc
 
-CXXFLAGS = -I$(IDIR) -O2 -ipo
+CXXFLAGS = -I$(IDIR) -O2 -xHost -ipo
 ## -02: optimize for speed
 ## -ipo: enable interprocedural optimization
+## -xHost tune code to only run on this host archetecture
 
 PROG=61.exe
 

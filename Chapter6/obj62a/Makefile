@@ -14,13 +14,14 @@
 IDIR = ../src
 CXX = icpc
 
-CXXFLAGS = -I$(IDIR) -O2 -ipo -g -profile-functions -profile-loops:all -profile-loops-report:2
 ## -O2: optimize for speed
 ## -ipo: enable interprocedural optimization
 ## -g: generate debug information
 ## -profile-functions: track time for functions
 ## -profile-loops:all: track time for inner and outer loops
 ## -profile-loops-report:2: level of detail in report, 2 reports loop times and iteration counts
+## -xHost tune code to only run on this host archetecture
+CXXFLAGS = -I$(IDIR) -O2 -xHOST  -inline-level=0 -g -profile-functions -profile-loops:all -profile-loops-report:2
 
 PROG=62.exe
 
@@ -50,5 +51,7 @@ test: 62.exe
 	./$(PROG) |tee log_run5
 	cat log_run*
 
-stats: 62.exe
-	echo "$(cat log_run* |grep "Time to calc" |sed 's/\.\.\./#/g' |awk -F# '{sum+=$2} END {print sum}')/5"|bc -l
+help:
+	echo "loopprofileviewer.sh loop_prof_*.xml"
+
+#	echo "cat log_run* |grep \"Time_to_calc\" |awk -F: \'{sum+=\\$2} END {print sum}\'"

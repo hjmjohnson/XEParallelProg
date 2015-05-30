@@ -11,8 +11,8 @@ const float deltaY = 4.0;
 extern float zr[maxI][maxJ], zi[maxI][maxJ];
 extern float zcolor[maxI][maxJ];
 
-void Mandelbrot();
+extern void Mandelbrot();
 
-void WriteMandlebrot();
+extern void WriteMandlebrot();
 
 #endif

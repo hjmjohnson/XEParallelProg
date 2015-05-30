@@ -27,4 +27,11 @@
 *.out
 *.app
 
+# image outputs
 *.ppm
+# profile outputs
+*.xml
+*.dump
+
+#Editor files
+*.swp

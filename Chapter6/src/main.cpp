@@ -19,8 +19,8 @@ int main()
   WriteMandlebrot();
   double end = wtime();
 
-  std::cout << "Time to calc :..." << std::setprecision(4) \
+  std::cout << "Time_to_calc: " << std::setprecision(4) \
             << mid - start << std::endl;
-  std::cout << "Time to print :..." << end - mid << std::endl;
-  std::cout << "Time (Total) :..." << end - start << std::endl;
+  std::cout << "Time_to_print: " << end - mid << std::endl;
+  std::cout << "Time_Total: " << end - start << std::endl;
 }

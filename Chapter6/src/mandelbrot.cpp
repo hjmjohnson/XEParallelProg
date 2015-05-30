@@ -1,48 +1,44 @@
 #include "mandelbrot.h"
 
-float CalcMandelbrot(float r, float i)
+static float CalcMandelbrot(float r, float i)
 {
-  float zi = 0.0;
-  float zr = 0.0;
+  float zi = 0.0F;
+  float zr = 0.0F;
   int   itercount = 0;
-  float maxit = (float)maxIteration;
+  const float maxit = (float)maxIteration;
 
-  while( 1 )
+  while( itercount <= maxIteration )
     {
     itercount++;
-    float temp = zr * zi;
-    float zr2 = zr * zr;
-    float zi2 = zi * zi;
+    const float temp = zr * zi;
+    const float zr2 = zr * zr;
+    const float zi2 = zi * zi;
     zr = zr2 - zi2 + r;
     zi = temp + temp + i;
     if( zi2 + zr2 > maxThreshold )
       {
-      return (float)256 * itercount / maxit;
-      }
-    if( itercount > maxIteration )
-      {
-      return (float)1.0;
+      return (float)256.0F * itercount / maxit;
       }
     }
 
-  return 1;
+  return 1.0F;
 }
 
-void SetZ( int i, int j, float xinc, float yinc )
+static void SetZ( int i, int j, float xinc, float yinc )
 {
-  zr[i][j] = (float) -1.0 * deltaX / 2.0 + xinc * i;
-  zi[i][j] = (float) 1.0 * deltaY / 2.0 - yinc * j;
-  zcolor[i][j] = CalcMandelbrot(zr[i][j], zi[i][j] ) / 1.0001;
+  zr[i][j] = (float) -1.0F * deltaX / 2.0F + xinc * i;
+  zi[i][j] = (float) 1.0F * deltaY / 2.0F - yinc * j;
+  zcolor[i][j] = CalcMandelbrot(zr[i][j], zi[i][j] ) / 1.0001F;
 }
 
 void Mandelbrot()
 {
-  float xinc = (float)deltaX / (maxI - 1);
-  float yinc = (float)deltaY / (maxJ - 1);
+  const float xinc = (float)deltaX / (maxI - 1);
+  const float yinc = (float)deltaY / (maxJ - 1);
 
-  for( int i = 0; i < maxI; i++ )
+  for( int i = 0; i < maxI; ++i )
     {
-    for( int j = 0; j < maxJ; j++ )
+    for( int j = 0; j < maxJ; ++j )
       {
       SetZ(i, j, xinc, yinc);
       }
