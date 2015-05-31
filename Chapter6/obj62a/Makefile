@@ -15,15 +15,16 @@ IDIR = ../src
 CXX = icpc
 
 ## -O2: optimize for speed
+## -xHost tune code to only run on this host archetecture
 ## -ipo: enable interprocedural optimization
 ## -g: generate debug information
 ## -profile-functions: track time for functions
 ## -profile-loops:all: track time for inner and outer loops
 ## -profile-loops-report:2: level of detail in report, 2 reports loop times and iteration counts
-## -xHost tune code to only run on this host archetecture
-CXXFLAGS = -I$(IDIR) -O2 -xHOST  -inline-level=0 -g -profile-functions -profile-loops:all -profile-loops-report:2
 
-PROG=62.exe
+CXXFLAGS = -I$(IDIR) -std=c++11 -O2 -xHOST -ipo -g -profile-functions -profile-loops:all -profile-loops-report:2
+
+PROG=62a.exe
 
 LIBS = -lm
 
@@ -43,7 +44,7 @@ $(PROG): $(OBJ)
 clean:
 	rm -f *.o *~ core $(INCDIR)/*~
 
-test: 62.exe
+test: $(PROG)
 	./$(PROG) |tee log_run1
 	./$(PROG) |tee log_run2
 	./$(PROG) |tee log_run3

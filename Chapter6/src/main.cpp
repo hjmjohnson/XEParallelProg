@@ -4,20 +4,18 @@
 #include "mandelbrot.h"
 #include "wtime.h"
 
-float zr[maxI][maxJ], zi[maxI][maxJ];
-float zcolor[maxI][maxJ];
 
 int main()
 {
   std::cout << "calculating..." << std::endl;
-  double start = wtime();
+  const double start = wtime();
 
   Mandelbrot();
-  double mid = wtime();
+  const double mid = wtime();
 
   std::cout << "printing..." << std::endl;
   WriteMandlebrot();
-  double end = wtime();
+  const double end = wtime();
 
   std::cout << "Time_to_calc: " << std::setprecision(4) \
             << mid - start << std::endl;

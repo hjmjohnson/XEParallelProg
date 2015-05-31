@@ -1,14 +1,15 @@
 #ifndef __MANDLE_H__
 #define __MANDLE_H__
-const int   factor = 8;
-const int   maxThreshold = 96;
-const int   maxIteration = 500;
-const int   maxI = 1024 * factor;
-const int   maxJ = 1024 * factor;
-const float deltaX = 4.0;
-const float deltaY = 4.0;
+constexpr int   factor = 8;
+constexpr int   maxThreshold = 96;
+constexpr int   maxIteration = 500;
+constexpr int   maxI = 1024 * factor;
+constexpr int   maxJ = 1024 * factor;
+constexpr float deltaX = 4.0;
+constexpr float deltaY = 4.0;
 
-extern float zr[maxI][maxJ], zi[maxI][maxJ];
+extern float zr[maxI][maxJ];
+extern float zi[maxI][maxJ];
 extern float zcolor[maxI][maxJ];
 
 extern void Mandelbrot();

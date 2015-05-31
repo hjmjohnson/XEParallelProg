@@ -14,13 +14,12 @@
 IDIR = ../src
 CXX = icpc
 
-CXXFLAGS = -I$(IDIR) -g -O2 -ipo
 ## -O2: optimize for speed
 ## -ipo: enable interprocedural optimization
 ## -g: generate debug information
+CXXFLAGS = -I$(IDIR) -std=c++11 -O2 -xHOST -ipo -g
 
-ODIR61 = obj61
-LDIR = obj61
+PROG=63b.exe
 
 LIBS = -lm
 
@@ -32,10 +31,23 @@ OBJ = mandelbrot.o main.o ppm.o wtime.o
 %.o: ../src/%.cpp $(DEPS)
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
-63.exe: $(OBJ)
+$(PROG): $(OBJ)
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
 
 .PHONY: clean
 
 clean:
 	rm -f *.o *~ core $(INCDIR)/*~
+
+test: $(PROG)
+	./$(PROG) |tee log_run1
+	./$(PROG) |tee log_run2
+	./$(PROG) |tee log_run3
+	./$(PROG) |tee log_run4
+	./$(PROG) |tee log_run5
+	cat log_run*
+
+help:
+	echo "loopprofileviewer.sh loop_prof_*.xml"
+
+#	echo "cat log_run* |grep \"Time_to_calc\" |awk -F: \'{sum+=\\$2} END {print sum}\'"

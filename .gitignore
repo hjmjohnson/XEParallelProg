@@ -35,3 +35,8 @@
 
 #Editor files
 *.swp
+
+*.optrpt
+*.orig
+log_run*
+

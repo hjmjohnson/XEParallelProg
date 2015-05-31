@@ -14,10 +14,11 @@
 IDIR = ../src
 CXX = icpc
 
-CXXFLAGS = -I$(IDIR) -O2 -xHost -ipo
-## -02: optimize for speed
+## -O2: optimize for speed
 ## -ipo: enable interprocedural optimization
 ## -xHost tune code to only run on this host archetecture
+
+CXXFLAGS = -I$(IDIR) -std=c++11 -O2 -xHost -ipo
 
 PROG=61.exe
 
@@ -39,7 +40,7 @@ $(PROG): $(OBJ)
 clean:
 	rm -f *.o *~ core $(INCDIR)/*~
 
-test: 62.exe
+test: $(PROG)
 	./$(PROG) |tee log_run1
 	./$(PROG) |tee log_run2
 	./$(PROG) |tee log_run3
