@@ -42,11 +42,15 @@ void Mandelbrot()
   const float xinc = (float)deltaX / (maxI - 1);
   const float yinc = (float)deltaY / (maxJ - 1);
 
-  for( int i = 0; i < maxI; ++i )
     {
-    for( int j = 0; j < maxJ; ++j )
+//#pragma omp parallel for
+#pragma omp parallel for collapse(2)
+    for( int i = 0; i < maxI; ++i )
       {
-      SetZ(i, j, xinc, yinc);
+      for( int j = 0; j < maxJ; ++j )
+        {
+        SetZ(i, j, xinc, yinc);
+        }
       }
     }
 }

@@ -19,7 +19,7 @@ CXX = icpc
 ## -g: generate debug information
 ## -inline-level=1: disables inlining (=0 disables all inlineing)
 
-CXXFLAGS = -I$(IDIR) -std=c++11 -O2 -xHOST -ipo -g -inline-level=1
+CXXFLAGS = -I$(IDIR) -std=c++11 -O2 -xHOST -ipo -g -inline-level=1 -openmp
 
 PROG=64b.exe
 
