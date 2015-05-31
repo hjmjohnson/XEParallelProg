@@ -2,23 +2,29 @@
 #include <iostream>
 #include <iomanip>
 #include "mandelbrot.h"
-#include "wtime.h"
+#include "StopWatch.h"
 
 
 int main()
 {
   std::cout << "calculating..." << std::endl;
-  const double start = wtime();
+  StopWatch ComputeMandelbrot;
+  ComputeMandelbrot.StartTimer();
 
   Mandelbrot();
-  const double mid = wtime();
+  ComputeMandelbrot.StopTimer();
 
+  StopWatch PrintMandelbrot;
+  PrintMandelbrot.StartTimer();
   std::cout << "printing..." << std::endl;
   WriteMandlebrot();
-  const double end = wtime();
+  PrintMandelbrot.StopTimer();
 
   std::cout << "Time_to_calc: " << std::setprecision(4) \
-            << mid - start << std::endl;
-  std::cout << "Time_to_print: " << end - mid << std::endl;
-  std::cout << "Time_Total: " << end - start << std::endl;
+            << ComputeMandelbrot.GetElapsedSeconds() << std::endl;
+  std::cout << "Time_to_print: "
+            << PrintMandelbrot.GetElapsedSeconds() << std::endl;
+  const double totalTime= ComputeMandelbrot.GetElapsedSeconds() + PrintMandelbrot.GetElapsedSeconds();
+  std::cout << "Time_Total: "
+ << totalTime << std::endl;
 }

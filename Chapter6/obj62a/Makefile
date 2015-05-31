@@ -31,7 +31,7 @@ LIBS = -lm
 _DEPS = mandelbrot.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-OBJ = mandelbrot.o main.o ppm.o wtime.o
+OBJ = mandelbrot.o main.o ppm.o
 
 %.o: ../src/%.cpp $(DEPS)
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
