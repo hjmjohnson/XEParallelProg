@@ -29,10 +29,10 @@ float sqroot(int n)
 int main()
 {
   FILE *pFile = fopen(".\\Test.Data","r");
-  if(!pFile){ printf("Couldn’t open Test.Data");exit(999);}
+  if(!pFile){ printf("Couldn't open Test.Data");exit(999);}
 
   FILE *pOutputFile = fopen("Squared.Data","w");
-  if(!pOutputFile){ printf("Couldn’t open Squared.Data");exit(999);}
+  if(!pOutputFile){ printf("Couldn't open Squared.Data");exit(999);}
 
   // for every line in file ...
   for (int i = 0; i < NUM_LINES; i++)
