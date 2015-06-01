@@ -29,22 +29,27 @@ DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 OBJ = Lambda.o
 
 
-all: Lambda.exe Lambda_SeparateTasks.exe Lambda_MultiProcessor.exe
+all: 01NoLambda.exe 02Lambda.exe 03Lambda_SeparateTasks.exe 04Lambda_MultiProcessor.exe
 
 %.o: ../src/%.cpp $(DEPS)
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
-Lambda.exe: Lambda.o
+01NoLambda.exe: 01NoLambda.o
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
 	echo "=========== DOING $@"
 	./$@
 
-Lambda_SeparateTasks.exe: Lambda_SeparateTasks.o
+02Lambda.exe: 02Lambda.o
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
 	echo "=========== DOING $@"
 	./$@
 
-Lambda_MultiProcessor.exe: Lambda_MultiProcessor.o
+03Lambda_SeparateTasks.exe: 03Lambda_SeparateTasks.o
+	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
+	echo "=========== DOING $@"
+	./$@
+
+04Lambda_MultiProcessor.exe: 04Lambda_MultiProcessor.o
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
 	echo "=========== DOING $@"
 	./$@
