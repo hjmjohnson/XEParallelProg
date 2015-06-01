@@ -43,7 +43,7 @@ int main()
   StopWatch TotalTimer;
   TotalTimer.StartTimer();
 
-  #pragma omp parallel
+  #pragma omp parallel default(none) shared(pFile, pOutputFile, LineIn, LineOut)
   {
     for (int i = 0; i < NUM_LINES; i++)
     {

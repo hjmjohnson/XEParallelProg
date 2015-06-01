@@ -9,7 +9,7 @@ int main()
 {
   StopWatch TotalTimer;
   TotalTimer.StartTimer();
-  #pragma omp parallel sections
+  #pragma omp parallel sections default(none)
   {
     #pragma omp section
     {

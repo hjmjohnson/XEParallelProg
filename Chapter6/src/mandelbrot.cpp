@@ -69,7 +69,7 @@ size_t CalculateMandelbrotSignature()
 {
   size_t signature = 0.0;
 #if defined(_OPENMP)
-#pragma omp parallel for reduction(+:signature)
+#pragma omp parallel for reduction(+:signature) default(none) shared(zcolor) firstprivate(maxI, maxJ)
 #endif
   for( size_t i = 0; i < maxI; ++i )
     {
@@ -127,7 +127,7 @@ void Mandelbrot()
     {
 //#pragma omp parallel for
 #if defined(_OPENMP)
-#pragma omp parallel for collapse(2)
+#pragma omp parallel for collapse(2) default(none) firstprivate(maxI, maxJ)
 #endif
     for( size_t i = 0; i < maxI; ++i )
       {

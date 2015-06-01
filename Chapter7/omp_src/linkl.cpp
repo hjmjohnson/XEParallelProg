@@ -42,7 +42,7 @@ static void Work(LLNode * thisNode)
 // linked list iteration
 static void RunThoughLinkedList( LLNode *Head)
 {
-  #pragma omp parallel
+  #pragma omp parallel default(none) shared(Head)
   {
     #pragma omp single
     {

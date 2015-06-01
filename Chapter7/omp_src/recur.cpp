@@ -20,7 +20,7 @@ int main()
   StopWatch TotalTimer;
   TotalTimer.StartTimer();
   int i = 0;
-  #pragma omp parallel
+  #pragma omp parallel default(none) private(i)
   #pragma omp single
   {
     Work(i);
