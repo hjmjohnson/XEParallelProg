@@ -27,32 +27,23 @@
 /* IGNORE THIS */}
 
 
-    /////////////////////////////////////////
-    //////// PAY ATTENTION TO CODE BELOW HERE
+/////////////////////////////////////////
+//////// PAY ATTENTION TO CODE BELOW HERE
 static void Work(LLNode * thisNode)
 {
-  const int tid=omp_get_thread_num(); // <---------------------------- Fill in LL with current thread number
+  const int tid=1;
   thisNode->payload=tid;
 }
 
 // linked list iteration
 static void RunThoughLinkedList( LLNode *Head)
 {
-#pragma omp parallel
-    {
-#pragma omp single
-      {
-      LLNode *pHead = Head;
-      while(pHead != NULL)
-        {
-#pragma omp task firstprivate(pHead) // <----------------------------
-          {
-          Work(pHead);
-          }
-        pHead = pHead->next;
-        }
-      }
-    }
+  LLNode *pHead = Head;
+  while(pHead != NULL)
+  {
+    Work(pHead);
+    pHead = pHead->next;
+  }
 }
 
 

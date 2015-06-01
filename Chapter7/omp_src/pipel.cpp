@@ -28,7 +28,7 @@ float LineOut[NUM_LINES][LINE_LENGTH];
 
 int main()
 {
-  FILE *pFile = fopen(".\\Test.Data","r");
+  FILE *pFile = fopen("../src/Test.Data","r");
   if(!pFile){ printf("Couldn't open Test.Data");exit(999);}
 
   FILE *pOutputFile = fopen("OpenMP_Squared.Data","w");

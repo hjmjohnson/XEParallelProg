@@ -35,14 +35,17 @@ static void RunThoughLinkedList( LLNode *Head)
 
 static void PrintLL(LLNode *currNode)
  {
- unsigned char count=0;
+ unsigned char count=1;
  while(currNode != NULL)
    {
    if( count%10  == 0 )
      {
      std::cout << std::flush << std::endl;
+     count=1;
      }
-   std::cout << currNode->payload << " ";
+   std::cout << currNode->payload << "\t";
+   currNode=currNode->next;
+   count++;
   }
   std::cout << std::flush << std::endl;
 
@@ -60,7 +63,9 @@ int main()
   currNode=currNode->next;
   }
 
+  PrintLL(myLLHead);
   RunThoughLinkedList(myLLHead);
+  PrintLL(myLLHead);
 
  return EXIT_SUCCESS;
 }
