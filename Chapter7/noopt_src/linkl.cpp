@@ -1,5 +1,6 @@
 #include <iostream>
 #include <omp.h>
+#include "StopWatch.h"
 
 /* IGNORE THIS */class LLNode{
 /* IGNORE THIS */ public:
@@ -57,9 +58,19 @@ int main()
     currNode->next=new LLNode();
     currNode=currNode->next;
     }
+
   PrintLL(myLLHead);
+
+  StopWatch TotalTimer;
+  TotalTimer.StartTimer();
+
   RunThoughLinkedList(myLLHead);
+
+  TotalTimer.StopTimer();
+
   PrintLL(myLLHead);
+
+  std::cout << "Time_Total: " << TotalTimer.GetElapsedSeconds() << std::flush << std::endl;
 
   return EXIT_SUCCESS;
 }

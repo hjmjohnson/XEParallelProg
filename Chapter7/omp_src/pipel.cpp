@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 #include <omp.h>
+#include "StopWatch.h"
 #define LINE_LENGTH 8000
 #define NUM_LINES 100
 #define NUM_ENTRIES LINE_LENGTH * NUM_LINES
@@ -38,6 +40,9 @@ int main()
   for (int j = 0; j < LINE_LENGTH; j++)
     fscanf( pFile,"%d ",&LineIn[0][j]);
 
+  StopWatch TotalTimer;
+  TotalTimer.StartTimer();
+
   #pragma omp parallel
   {
     for (int i = 0; i < NUM_LINES; i++)
@@ -68,6 +73,9 @@ int main()
       }
     }
   }
+
+  TotalTimer.StopTimer();
+  std::cout << "Time_Total: " << TotalTimer.GetElapsedSeconds() << std::flush << std::endl;
 
   fclose(pFile);
   fclose(pOutputFile);

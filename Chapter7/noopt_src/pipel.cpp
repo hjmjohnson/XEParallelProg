@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
+#include "StopWatch.h"
 
 #define LINE_LENGTH 8000
 #define NUM_LINES 100
@@ -34,6 +36,9 @@ int main()
   FILE *pOutputFile = fopen("Squared.Data","w");
   if(!pOutputFile){ printf("Couldn't open Squared.Data");exit(999);}
 
+  StopWatch TotalTimer;
+  TotalTimer.StartTimer();
+
   // for every line in file ...
   for (int i = 0; i < NUM_LINES; i++)
   {
@@ -50,6 +55,9 @@ int main()
     fprintf(pOutputFile,"%f ",LineOut[j]);
     fprintf(pOutputFile,"\n");
   }
+  
+  TotalTimer.StopTimer();
+  std::cout << "Time_Total: " << TotalTimer.GetElapsedSeconds() << std::flush << std::endl;
 
   fclose(pFile);
   fclose(pOutputFile);
