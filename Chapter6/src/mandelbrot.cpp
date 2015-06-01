@@ -68,7 +68,9 @@ static size_t LargestPrime(size_t TheNum)
 size_t CalculateMandelbrotSignature()
 {
   size_t signature = 0.0;
+#if defined(_OPENMP)
 #pragma omp parallel for reduction(+:signature)
+#endif
   for( size_t i = 0; i < maxI; ++i )
     {
     const size_t primeX = LargestPrime(i);
@@ -124,7 +126,9 @@ void Mandelbrot()
 
     {
 //#pragma omp parallel for
+#if defined(_OPENMP)
 #pragma omp parallel for collapse(2)
+#endif
     for( size_t i = 0; i < maxI; ++i )
       {
       for( size_t j = 0; j < maxJ; ++j )

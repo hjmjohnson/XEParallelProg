@@ -23,7 +23,7 @@ CXX = icpc
 ## -profile-loops-report:2: level of detail in report, 2 reports loop times and iteration counts
 ## -inline-level:0: disables inlining
 
-CXXFLAGS = -I$(IDIR) -std=c++11 -O2 -xHOST -ipo -g -profile-functions -profile-loops:all -profile-loops-report:2 -inline-level=0 -inline-level=0
+CXXFLAGS = -I$(IDIR) -std=c++11 -O2 -xHOST -ipo -g -profile-functions -profile-loops:all -profile-loops-report:2 -inline-level=0
 
 PROG=62b.exe
 
