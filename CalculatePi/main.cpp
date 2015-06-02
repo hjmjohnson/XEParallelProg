@@ -1,4 +1,3 @@
-//
 //  Created by Hans Johnson on 5/15/15.
 //  Copyright (c) 2015 Hans Johnson. All rights reserved.
 //
@@ -29,16 +28,16 @@ static double CaluculatePiByEstimatingUnitCircleArea(const size_t numSubdivision
 
   const double dx = 1.0/static_cast<double>(numSubdivisions);
   const double quarterAreaPixel = dx*dx;
-  
+
   double quarterArea = 0.0;
-  //CONSIDERATIONS  .. 
+  //CONSIDERATIONS  ..
   for(size_t y=0; y < numSubdivisions; ++y)
     {
     for(size_t x=0; x < numSubdivisions; ++x)
       {
       const double xloc = static_cast<double>(x) * dx;
       const double yloc = static_cast<double>(y) * dx;
-      
+
       const double radius = xloc*xloc+yloc*yloc;
       if (radius < 1 )
         {
@@ -58,12 +57,12 @@ int main(int argc, const char * argv[])
 {
 
   std::cout << "Calculating pi by computing the of 1/4 unit-circle." << std::endl;
-  
+
   StopWatch PiTimer;
   PiTimer.StartTimer();
-  const double areaUnitCircle = CaluculatePiByEstimatingUnitCircleArea(25000);
+  const double areaUnitCircle = CaluculatePiByEstimatingUnitCircleArea(50000);
   PiTimer.StopTimer();
-  
+
   std::cout << std::setprecision(17) ;
   std::cout << "Accurate   PI = " << pi() << std::endl;
   std::cout << "Calculated PI = " << areaUnitCircle << std::endl;
