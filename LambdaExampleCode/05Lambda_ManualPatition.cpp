@@ -28,14 +28,12 @@ std::cout << "Only using " << MAXTHREADS << " of " << omp_get_max_threads() << s
 
 #pragma omp parallel default(none) num_threads(MAXTHREADS) private(tid,startIndex,stopIndex) firstprivate(m,b) shared(x)
     {
-      {
       // TASK#0
       tid=omp_get_thread_num();
       startIndex=tid*(CHUNKSIZE);
       stopIndex=( tid == ( MAXTHREADS-1) ) ? VECTOR_SIZE : (tid+1)*(CHUNKSIZE);
       std::for_each(x+startIndex, x+stopIndex,
         [m,b,tid](float &in) -> void { in = m*in+b ; } );
-      }
     }
 
     std::cout << "\n\n" << std::endl;

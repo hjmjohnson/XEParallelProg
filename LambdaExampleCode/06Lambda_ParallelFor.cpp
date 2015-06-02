@@ -16,12 +16,12 @@ int main()
   // Solve x=m*x+b
   const float m=2.0F;
   const float b=10.0F;
-  //size_t tid;        //The thread number
-  //size_t startIndex; //Processing start point
-  //size_t stopIndex;  //Processing end point
 
 #pragma omp parallel for default(none) firstprivate(m,b) shared(x)
-  for(size_t i=0; i< VECTOR_SIZE; ++i) {            x[i]=m*x[i]+b;}
+  for(size_t i=0; i< VECTOR_SIZE; ++i)
+    {
+    x[i]=m*x[i]+b;
+    }
 
   std::cout << "\n\n" << std::endl;
   // Now print
