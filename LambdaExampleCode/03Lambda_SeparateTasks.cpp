@@ -30,7 +30,7 @@ int main()
       startIndex=tid*(CHUNKSIZE);
       stopIndex=( tid == ( MAXTHREADS-1) ) ? VECTOR_SIZE : (tid+1)*(CHUNKSIZE);
       std::for_each(x+startIndex, x+stopIndex,
-        [m,b,tid](float &in) -> void { in = m*in+b ; } );
+        [m,b](float &in) -> void { in = m*in+b ; } );
       }
       {
       // TASK#1
@@ -38,7 +38,7 @@ int main()
       startIndex=tid*(CHUNKSIZE);
       stopIndex=( tid == ( MAXTHREADS-1) ) ? VECTOR_SIZE : (tid+1)*(CHUNKSIZE);
       std::for_each(x+startIndex, x+stopIndex,
-        [m,b,tid](float &in) -> void { in = m*in+b ; } );
+        [m,b](float &in) -> void { in = m*in+b ; } );
       }
       {
       // TASK#2
@@ -46,7 +46,7 @@ int main()
       startIndex=tid*(CHUNKSIZE);
       stopIndex=( tid == ( MAXTHREADS-1) ) ? VECTOR_SIZE : (tid+1)*(CHUNKSIZE);
       std::for_each(x+startIndex, x+stopIndex,
-        [m,b,tid](float &in) -> void { in = m*in+b ; } );
+        [m,b](float &in) -> void { in = m*in+b ; } );
       }
       {
       // TASK#3
@@ -54,7 +54,7 @@ int main()
       startIndex=tid*(CHUNKSIZE);
       stopIndex=( tid == ( MAXTHREADS-1) ) ? VECTOR_SIZE : (tid+1)*(CHUNKSIZE);
       std::for_each(x+startIndex, x+stopIndex,
-        [m,b,tid](float &in) -> void { in = m*in+b ; } );
+        [m,b](float &in) -> void { in = m*in+b ; } );
       }
     }
 
@@ -63,7 +63,7 @@ int main()
     startIndex=0;
     stopIndex=VECTOR_SIZE;
     std::for_each(x+startIndex, x+stopIndex,
-        [m,b](const float in) -> void { std::cout <<  in << " "; } );
+        [](const float in) -> void { std::cout <<  in << " "; } );
 
   std::cout << std::endl;
   return EXIT_SUCCESS;

@@ -10,7 +10,11 @@ int main()
 // Add second
 //#pragma omp critical
    {
+#if defined(_OPENMP)
    int id = omp_get_thread_num();
+#else
+   int id = 0;
+#endif
    std::cout << "HelloWorld(" << id << ")"
              << std::flush << std::endl;
    }

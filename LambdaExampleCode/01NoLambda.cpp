@@ -11,7 +11,7 @@ static void global_set_values(float & in)
 
 float global_slope;
 float global_intercept;
-static void global_print_line(float & in)
+static void global_line(float & in)
 {
   in=in*global_slope+global_intercept;
 }
@@ -33,7 +33,7 @@ int main()
   global_slope=2.0;
   global_intercept=10.0;
   std::for_each(x, x+VECTOR_SIZE,
-                global_print_line );
+                global_line );
 
   std::for_each(x, x+VECTOR_SIZE,
                 print );
