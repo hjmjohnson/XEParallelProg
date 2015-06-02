@@ -127,7 +127,7 @@ void Mandelbrot()
     {
 //#pragma omp parallel for
 #if defined(_OPENMP)
-#pragma omp parallel for collapse(2) default(none) firstprivate(maxI, maxJ)
+#pragma omp parallel for collapse(2) default(none) firstprivate(maxI, maxJ,xinc,yinc)
 #endif
     for( size_t i = 0; i < maxI; ++i )
       {
